@@ -81,7 +81,6 @@ This project builds an end-to-end analytical pipeline — from raw data collecti
 ## 3. Methodology
 
 ### Pipeline
-
 ```
 Raw Data (FAOSTAT + World Bank)
         ↓
@@ -91,9 +90,8 @@ Raw Data (FAOSTAT + World Bank)
      Merge
   (M49 → ISO3 country code standardization, left join on iso3 + Year)
         ↓
- Feature Engineering        ← coming in Phase 3
-        ↓
-       EDA                  ← coming in Phase 3
+       EDA
+  (distributions, correlations, clustering, COVID impact analysis)
         ↓
     Modeling                ← coming in Phase 4
         ↓
@@ -106,7 +104,7 @@ Raw Data (FAOSTAT + World Bank)
 |---|---|---|
 | Phase 1 | Data Collection & Understanding | ✅ Complete |
 | Phase 2 | Data Cleaning & Integration | ✅ Complete |
-| Phase 3 | EDA | 🔄 In Progress |
+| Phase 3 | EDA | ✅ Complete |
 | Phase 4 | Modeling & Analysis | ⏳ Planned |
 | Phase 5 | Insights & Reporting | ⏳ Planned |
 
@@ -125,7 +123,55 @@ Raw Data (FAOSTAT + World Bank)
 
 ## 4. Results
 
-> Results will be added upon completion of Phase 4 (Modeling & Analysis).
+### Key EDA Findings (Phase 3)
+
+#### Highest-Risk Countries (2022)
+
+| Rank | Country | Undernourishment |
+|------|---------|-----------------|
+| 1 | Somalia | 52.1% |
+| 2 | Haiti | 47.8% |
+| 3 | Madagascar | 39.9% |
+| 4 | Liberia | 37.7% |
+| 5 | DR Congo | 36.6% |
+
+#### Strongest Predictors
+
+| Feature | Correlation with Target | Direction |
+|---------|------------------------|-----------|
+| `dietary_energy_supply_kcal` | -0.84 | More food supply → less risk |
+| `food_supply_kcal` | -0.83 | (highly correlated with above) |
+| `poverty_rate` | +0.80 | More poverty → more risk |
+| `protein_supply_g` | -0.77 | More protein → less risk |
+| `political_stability_index` | -0.42 | More stability → less risk |
+| `gdp_per_capita` | -0.41 | Higher GDP → less risk (non-linear) |
+
+#### Country Risk Clusters (2022)
+
+| Cluster | Countries | Avg Undernourishment | Profile |
+|---------|-----------|---------------------|---------|
+| 🔴 High Risk | 46 | 21.7% | Low GDP, political instability, high population growth |
+| 🟠 Medium Risk | 39 | 9.3% | Middle-income, tropical regions |
+| 🔵 Low Risk | 58 | 3.8% | Middle-to-high income, stable |
+| 🟢 Very Low Risk | 25 | 2.6% | Advanced economies, Gulf states |
+
+#### Regional Trends (2010–2022)
+
+| Region | Avg Undernourishment | Trend |
+|--------|---------------------|-------|
+| Africa | 19.2% | ➡ Flat — no meaningful improvement |
+| Oceania | 12.6% | ↘ Slight improvement |
+| Asia | 9.1% | ↘ Improving, slight uptick post-COVID |
+| Americas | 9.0% | ↘ Slight improvement |
+| Europe | 3.4% | ↘ Consistently improving |
+
+#### COVID-19 Impact
+
+- Global undernourishment temporarily improved in 2020, then worsened in 2021–2022
+- GDP recovered (+11% by 2022) but undernourishment still rose — recovery benefits did not reach the poorest populations
+- Most affected countries: Syria (+10.5pp), Kenya (+8.5pp), Guinea-Bissau (+7.0pp)
+
+> Full modeling results will be added upon completion of Phase 4.
 
 ---
 
@@ -146,7 +192,6 @@ Raw Data (FAOSTAT + World Bank)
 ---
 
 ## 7. Repository Structure
-
 ```
 food-security-risk-analysis/
 │
@@ -161,7 +206,7 @@ food-security-risk-analysis/
 ├── notebooks/
 │   ├── 01_data_loading.ipynb    ✅ Phase 1 complete
 │   ├── 02_cleaning.ipynb        ✅ Phase 2 complete
-│   ├── 03_eda.ipynb             🔄 In progress
+│   ├── 03_eda.ipynb             ✅ Phase 3 complete
 │   └── 04_modeling.ipynb        ⏳ Planned
 │
 ├── src/
@@ -184,12 +229,11 @@ food-security-risk-analysis/
 ## 8. Getting Started
 
 ### Requirements
-
 ```bash
 pip install -r requirements.txt
 ```
 
-**Key dependencies:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `pycountry`
+**Key dependencies:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `plotly`, `missingno`, `pycountry`
 
 ### Download Data
 
@@ -205,12 +249,11 @@ pip install -r requirements.txt
 2. Download → `WorldDevelopmentIndicators.csv`
 
 ### Run Notebooks
-
 ```bash
 # Run in order
 jupyter notebook notebooks/01_data_loading.ipynb
 jupyter notebook notebooks/02_cleaning.ipynb
-jupyter notebook notebooks/03_eda.ipynb        # coming soon
+jupyter notebook notebooks/03_eda.ipynb
 jupyter notebook notebooks/04_modeling.ipynb   # coming soon
 ```
 
@@ -218,4 +261,5 @@ jupyter notebook notebooks/04_modeling.ipynb   # coming soon
 
 ## Tech Stack
 
-`Python` · `Pandas` · `NumPy` · `Matplotlib` · `Seaborn` · `pycountry`
+`Python` · `Pandas` · `NumPy` · `Matplotlib` · `Seaborn` · `Scikit-learn` · `Plotly` · `Missingno` · `pycountry`
+```

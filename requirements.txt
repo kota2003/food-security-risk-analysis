@@ -9,11 +9,13 @@ pandas>=2.0.0
 numpy>=1.24.0
 
 # Country code standardization (Phase 2)
+missingno>=0.5.0
 pycountry>=22.3.5
 
 # Visualization (Phase 3+)
 matplotlib>=3.7.0
 seaborn>=0.12.0
+plotly>=5.0.0
 
 # Missing value visualization (Phase 3)
 missingno>=0.5.2
@@ -29,4 +31,5 @@ scipy>=1.11.0
 
 # Notebook
 jupyter>=1.0.0
+notebook>=7.0.0
 ipykernel>=6.0.0

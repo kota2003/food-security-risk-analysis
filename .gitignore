@@ -1,0 +1,22 @@
+cat > .gitignore << 'EOF'
+# Data files (too large for GitHub)
+data/raw/
+data/processed/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Outputs (figures/tables generated locally)
+outputs/figures/
+outputs/tables/
+EOF

@@ -105,13 +105,13 @@ Data Loading  →  Cleaning & Merge  →  EDA  →  Modeling  →  Insights
 
 ### Target Variable — Undernourishment Rate Distribution
 
-![Target variable distribution](outputs/figures/01_target_distribution.png)
+![Target variable distribution](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/01_target_distribution.png)
 
 *Figure 1 — Distribution of `undernourishment_pct` (raw and log-transformed). Strong right skew (Skewness = 2.037) necessitates log transformation for linear regression.*
 
 ### Feature Correlation Matrix
 
-![Correlation heatmap](outputs/figures/02_correlation_heatmap.png)
+![Correlation heatmap](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/02_correlation_heatmap.png)
 
 *Figure 2 — Pearson correlation matrix across all numeric features. Strongest predictors: `dietary_energy_supply_kcal` (r = −0.84), `poverty_rate` (r = +0.80), `protein_supply_g` (r = −0.77).*
 
@@ -119,7 +119,7 @@ Data Loading  →  Cleaning & Merge  →  EDA  →  Modeling  →  Insights
 
 ### Regional Trends (2010–2022)
 
-![Regional undernourishment trends](outputs/figures/03_regional_trends.png)
+![Regional undernourishment trends](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/03_regional_trends.png)
 
 *Figure 3 — Average undernourishment rate by region over time. Africa showed no improvement across the entire 13-year period. COVID-19 (2020–2022) reversed progress in all regions.*
 
@@ -133,7 +133,7 @@ Data Loading  →  Cleaning & Merge  →  EDA  →  Modeling  →  Insights
 
 ### Highest-Risk Countries (2022)
 
-![Top risk countries 2022](outputs/figures/04_top_risk_countries.png)
+![Top risk countries 2022](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/04_top_risk_countries.png)
 
 *Figure 4 — Top 15 countries by undernourishment rate (2022). **18 of the top 20 are in Africa.***
 
@@ -147,7 +147,7 @@ Data Loading  →  Cleaning & Merge  →  EDA  →  Modeling  →  Insights
 
 ### COVID-19 Impact (2019→2022)
 
-![COVID-19 impact analysis](outputs/figures/08_covid_impact.png)
+![COVID-19 impact analysis](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/08_covid_impact.png)
 
 *Figure 5 — Countries with the largest deterioration post-COVID. Global average rose +3.2pp despite GDP recovering +11% — economic recovery did not reach the poorest populations.*
 
@@ -176,13 +176,13 @@ A **linear regression model** was built on 1,313 complete-case observations (148
 
 ### Actual vs Predicted & Residuals
 
-![Model performance](outputs/figures/07_model_performance.png)
+![Model performance](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/07_model_performance.png)
 
 *Figure 6 — Actual vs. Predicted (left) and Residual Plot (right) on the test set. No systematic bias detected.*
 
 ### Feature Importance
 
-![Feature importance](outputs/figures/05_feature_importance.png)
+![Feature importance](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/05_feature_importance.png)
 
 *Figure 7 — Standardized regression coefficients. `dietary_energy_supply_kcal` dominates at −0.560 — approximately 4× stronger than the next variable.*
 
@@ -198,7 +198,7 @@ A **linear regression model** was built on 1,313 complete-case observations (148
 
 ### GDP × Food Supply Structure
 
-![GDP vs food supply risk structure](outputs/figures/06_gdp_food_structure.png)
+![GDP vs food supply risk structure](https://raw.githubusercontent.com/kota2003/food-security-risk-analysis/main/outputs/figures/06_gdp_food_structure.png)
 
 *Figure 8 — Joint effect of GDP and food supply on undernourishment risk. The diagonal gradient (red bottom-left → green top-right) shows both economic strength and food access must improve together. Improving only one dimension has structurally limited impact.*
 
@@ -233,7 +233,7 @@ Africa's average predicted undernourishment (15.7%) is **2× Asia's (8.5%)** and
 ## 📁 Repository Structure
 
 ```
-project_food_security/
+food-security-risk-analysis/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
@@ -249,12 +249,6 @@ project_food_security/
 │   ├── 03_eda.ipynb
 │   └── 04_modeling.ipynb
 │
-├── src/
-│   ├── data_loader.py
-│   ├── data_cleaning.py
-│   ├── feature_engineering.py
-│   └── modeling.py
-│
 ├── outputs/
 │   └── figures/              # all saved visualizations
 │
@@ -262,6 +256,8 @@ project_food_security/
     ├── methodology.md
     └── findings.md
 ```
+
+> **Note:** Analysis is notebook-driven. No `src/` module structure is used.
 
 ---
 
@@ -271,7 +267,7 @@ project_food_security/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/food-security-risk-analysis.git
+git clone https://github.com/kota2003/food-security-risk-analysis.git
 cd food-security-risk-analysis
 
 # Create virtual environment (recommended)
